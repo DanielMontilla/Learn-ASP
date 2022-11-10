@@ -1,0 +1,60 @@
+﻿@page
+@model MyTV.Pages.Shows.IndexModel
+
+@{
+    ViewData["Title"] = "Shows";
+}
+
+<h1>Shows 🎞</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Show[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Show[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Show[0].Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Show[0].Ongoing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Show[0].Watched)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Show) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ongoing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Watched)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
